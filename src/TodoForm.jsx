@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
-import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
+import { View, Text, StyleSheet, TextInput } from 'react-native';
+import { FontAwesome5 } from '@expo/vector-icons'
 import AppCard from './AppCard'
+import AppButton from './AppButton';
 export const TodoForm = ({ title, submitTodo, setTitle }) => {
 
 
@@ -9,7 +11,9 @@ export const TodoForm = ({ title, submitTodo, setTitle }) => {
       <View><Text style={styles.label}>Todo title</Text></View>
       <View style={styles.form}>
         <TextInput style={styles.input} value={title} onChangeText={setTitle}/>
-        <Button title="Add" onPress={() => submitTodo()}/>
+        <AppButton onPress={() => submitTodo()} color="green">
+          <FontAwesome5 name="plus" size={20}/>
+        </AppButton>
       </View>
     </AppCard>
   )

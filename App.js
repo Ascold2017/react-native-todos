@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, FlatList, Text, Alert } from 'react-native';
+import { StyleSheet, View, FlatList, Text, Alert, Keyboard} from 'react-native';
 import { Navbar } from './src/Navbar';
 import { TodoForm } from './src/TodoForm';
 import { TodoItem } from './src/TodoItem';
@@ -12,6 +12,7 @@ export default function App() {
   const submitTodo = () => {
     saveTodo({ title, id: Date.now() });
     setTitle('');
+    Keyboard.dismiss();
   };
   const saveTodo = (todo) => {
     if (!editedItemId) {
@@ -23,6 +24,7 @@ export default function App() {
       setTodos(todos => todos.map(todoItem => todoItem.id === editedItemId ? { id: todoItem.id, title: todo.title } : todoItem));
       setEditedItemId(null)
     }
+    
   }
   const chooseTodo = todo => {
     setEditedItemId(todo.id);
