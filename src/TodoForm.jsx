@@ -1,17 +1,17 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TextInput, Button } from 'react-native';
-
+import AppCard from './AppCard'
 export const TodoForm = ({ title, submitTodo, setTitle }) => {
 
 
   return (
-    <View style={styles.container}>
+    <AppCard style={styles.container}>
       <View><Text style={styles.label}>Todo title</Text></View>
       <View style={styles.form}>
         <TextInput style={styles.input} value={title} onChangeText={setTitle}/>
         <Button title="Add" onPress={() => submitTodo()}/>
       </View>
-    </View>
+    </AppCard>
   )
 }
 
@@ -20,6 +20,8 @@ const styles = StyleSheet.create({
     paddingVertical: 20,
     paddingHorizontal: 20,
     width: '100%',
+    marginHorizontal: 0,
+    
   },
   label: {
     color: '#ccc',

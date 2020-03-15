@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { StyleSheet, View, FlatList, Text } from 'react-native';
+import { StyleSheet, View, FlatList, Text, Alert } from 'react-native';
 import { Navbar } from './src/Navbar';
 import { TodoForm } from './src/TodoForm';
 import { TodoItem } from './src/TodoItem';
@@ -29,9 +29,21 @@ export default function App() {
     setTitle(todo.title);
   }
   const removeTodo = todo => {
-    setTodos(todos => todos.filter(todoItem => todoItem.id !== todo.id));
-    setEditedItemId(null);
-    setTitle('')
+    
+    Alert.alert('Confirm', `Are you sure to remove ${todo.title} from todos?`, [
+      {
+        text: 'Yes',
+        onPress: () => {
+          setTodos(todos => todos.filter(todoItem => todoItem.id !== todo.id));
+          setEditedItemId(null);
+          setTitle('')
+        }
+      },
+      {
+        text: 'Cancel'
+      }
+    ])
+    
   }
   return (
     <View style={styles.container}>
@@ -42,7 +54,7 @@ export default function App() {
         style={styles.list}
         data={todos}
         renderItem={({ item }) => (<TodoItem todo={item} chooseTodo={chooseTodo} removeTodo={removeTodo}/>)}
-        keyExtractor={item => item.id}
+        keyExtractor={item => item.id.toString()}
       />
     </View>
   );

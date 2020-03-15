@@ -1,9 +1,10 @@
 import React from 'react';
-import { View, Text, StyleSheet } from 'react-native';
+import { View, Text, StyleSheet, Image } from 'react-native';
 
 export const Navbar = () => {
   return (
     <View style={styles.header}>
+      <Image style={styles.logo} source={{ uri: 'https://cdn.iconscout.com/icon/free/png-512/react-native-1-555609.png' }} resizeMode='contain' />
       <Text style={styles.title}>React Native Todos</Text>
     </View>
   )
@@ -12,9 +13,17 @@ export const Navbar = () => {
 const styles = StyleSheet.create({
   header: {
     backgroundColor: 'blue',
-    height: 60,
+    height: 70,
+    flexDirection: 'row',
     alignItems: 'center',
-    justifyContent: 'flex-end',
+    justifyContent: 'center',
+    paddingTop: 30,
+    paddingBottom: 10
+  },
+  logo: {
+    width: 30,
+    height: 30,
+    marginRight: 10
   },
   title: {
     color: 'white',
