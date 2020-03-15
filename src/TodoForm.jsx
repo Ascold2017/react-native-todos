@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
   label: {
     color: '#ccc',
     fontSize: 14,
-    fontWeight: '500'
+    fontFamily: 'Roboto'
   },
   input: {
     paddingVertical: 2,

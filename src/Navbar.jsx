@@ -18,7 +18,8 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     justifyContent: 'center',
     paddingTop: 30,
-    paddingBottom: 10
+    paddingBottom: 10,
+    
   },
   logo: {
     width: 30,
@@ -29,6 +30,7 @@ const styles = StyleSheet.create({
     color: 'white',
     paddingVertical: 5,
     fontWeight: 'bold',
-    fontSize: 16
+    fontSize: 16,
+    fontFamily: 'RobotoBold'
   }
 })
