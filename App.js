@@ -13,7 +13,14 @@ export default function App() {
     'RobotoBold': require('./assets/Roboto-Bold.ttf')
   })
 
-  if (!isAppReady) return <AppLoading startAsync={loadApp} onFinish={() => setIsAppReady(true)} onError={console.error} />
+  if (!isAppReady) return (
+    <AppLoading
+      startAsync={loadApp}
+      onFinish={() => setIsAppReady(true)}
+      onError={console.error}
+    />
+  );
+
   return (
     <TodoState>
       <Layout />

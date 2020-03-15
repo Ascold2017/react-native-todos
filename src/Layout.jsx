@@ -6,53 +6,17 @@ import { TodoItem } from './TodoItem';
 import { TodoContext } from './context/todo';
 
 export const Layout = () => {
-  const { todos, addTodo, editTodo, deleteTodo } = useContext(TodoContext);
-  const [editedItemId, setEditedItemId] = useState(null);
-  const [title, setTitle] = useState('');
-
-  const submitTodo = () => {
-    saveTodo({ title, id: Date.now() });
-    setTitle('');
-    Keyboard.dismiss();
-  };
-  const saveTodo = (todo) => {
-    if (!editedItemId) {
-      addTodo({ title: todo.title })
-    } else {
-      editTodo({ id: editedItemId, title: todo.title })
-      setEditedItemId(null)
-    }
-  }
-  const chooseTodo = todo => {
-    setEditedItemId(todo.id);
-    setTitle(todo.title);
-  }
-  const removeTodo = todo => {
-    Alert.alert('Confirm', `Are you sure to remove ${todo.title} from todos?`, [
-      {
-        text: 'Yes',
-        onPress: () => {
-          deleteTodo({ id: todo.id })
-          setEditedItemId(null);
-          setTitle('')
-        }
-      },
-      {
-        text: 'Cancel'
-      }
-    ])
-
-  }
+  const { todos } = useContext(TodoContext);
 
   return (
     <View style={styles.container}>
       <Navbar />
-      <TodoForm title={title} setTitle={setTitle} submitTodo={submitTodo} />
+      <TodoForm />
       {todos.length === 0 && <Text style={styles.emptyText}>Todos is empty.</Text>}
       <FlatList
         style={styles.list}
         data={todos}
-        renderItem={({ item }) => (<TodoItem todo={item} chooseTodo={chooseTodo} removeTodo={removeTodo} />)}
+        renderItem={({ item }) => (<TodoItem todo={item} />)}
         keyExtractor={item => item.id.toString()}
       />
     </View>
